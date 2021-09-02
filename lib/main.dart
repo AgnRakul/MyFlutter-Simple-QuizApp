@@ -1,8 +1,38 @@
 import 'package:flutter/material.dart';
 import 'model/question.dart';
 
+final ThemeData? _appTheme = _buildAppTheme();
+
+ThemeData _buildAppTheme() {
+  final ThemeData base = ThemeData.dark();
+
+  return base.copyWith(
+    brightness: Brightness.dark,
+    accentColor: Colors.amber[800],
+    primaryColor: Colors.green,
+    scaffoldBackgroundColor: Colors.red,
+    backgroundColor: Colors.amber,
+    textTheme: TextTheme(
+      bodyText2: TextStyle(fontSize: 20),
+    ),
+  );
+}
+
 void main() {
-  runApp(MaterialApp(home: QuizApp()));
+  runApp(
+    MaterialApp(
+      theme: _appTheme,
+      // theme: ThemeData(
+      //   brightness: Brightness.dark,
+      //   primaryColor: Colors.red[900],
+      //   textTheme: TextTheme(
+      //     headline1: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+      //     bodyText2: TextStyle(fontSize: 16.9, color: Colors.white),
+      //   ),
+      // ),
+      home: QuizApp(),
+    ),
+  );
 }
 
 class QuizApp extends StatefulWidget {
@@ -21,9 +51,9 @@ class _QuizAppState extends State<QuizApp> {
       appBar: AppBar(
         title: Text("True Citizen"),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        //  backgroundColor: Colors.blueGrey,
       ),
-      backgroundColor: Colors.blueGrey,
+      // backgroundColor: Colors.blueGrey,
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,12 +81,13 @@ class _QuizAppState extends State<QuizApp> {
                   child: Text(
                     questionList
                         .questionBank[_currentQuestionIndex].questionText,
-                    style: TextStyle(fontSize: 16.9, color: Colors.white),
+                    //style: TextStyle(fontSize: 16.9, color: Colors.white),
                   ),
                 )),
               ),
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              // ignore: deprecated_member_use
               RaisedButton(
                 onPressed: () => _previousQuestion(),
                 color: Colors.blueGrey.shade900,
@@ -65,6 +96,7 @@ class _QuizAppState extends State<QuizApp> {
                   color: Colors.white,
                 ),
               ),
+              // ignore: deprecated_member_use
               RaisedButton(
                 onPressed: () => _checkAnswer(true),
                 color: Colors.blueGrey.shade900,
@@ -73,6 +105,7 @@ class _QuizAppState extends State<QuizApp> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
+              // ignore: deprecated_member_use
               RaisedButton(
                 onPressed: () => _checkAnswer(false),
                 color: Colors.blueGrey.shade900,
@@ -81,6 +114,7 @@ class _QuizAppState extends State<QuizApp> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
+              // ignore: deprecated_member_use
               RaisedButton(
                 onPressed: () => _nextQuestion(),
                 color: Colors.blueGrey.shade900,
