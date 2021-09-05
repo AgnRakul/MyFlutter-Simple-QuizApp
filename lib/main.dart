@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'model/question.dart';
 
 final ThemeData? _appTheme = _buildAppTheme();
@@ -12,10 +13,23 @@ ThemeData _buildAppTheme() {
     primaryColor: Colors.green,
     scaffoldBackgroundColor: Colors.red,
     backgroundColor: Colors.amber,
-    textTheme: TextTheme(
-      bodyText2: TextStyle(fontSize: 20),
-    ),
+    textTheme: _appTextTheme(base.textTheme),
   );
+}
+
+TextTheme _appTextTheme(TextTheme base) {
+  return base.copyWith(
+      headline1: base.headline1!.copyWith(
+        fontWeight: FontWeight.w500,
+      ),
+      headline6: base.headline6!.copyWith(fontSize: 18.0),
+      caption:
+          base.caption!.copyWith(fontWeight: FontWeight.w400, fontSize: 14.0),
+      button: base.button!.copyWith(letterSpacing: 3.0, fontSize: 15.9),
+      bodyText2: base.bodyText2!.copyWith(
+        fontSize: 16.9,
+        color: Colors.white,
+      ));
 }
 
 void main() {
@@ -81,7 +95,7 @@ class _QuizAppState extends State<QuizApp> {
                   child: Text(
                     questionList
                         .questionBank[_currentQuestionIndex].questionText,
-                    //style: TextStyle(fontSize: 16.9, color: Colors.white),
+                    style: GoogleFonts.poppins(fontSize: 15),
                   ),
                 )),
               ),
